@@ -66,8 +66,8 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="bg-zinc-900 border-zinc-800 w-full sm:max-w-lg p-6">
-        <SheetHeader>
+      <SheetContent className="bg-zinc-900 border-zinc-800 w-full sm:max-w-lg px-6 py-4">
+        <SheetHeader className="pb-2">
           <SheetTitle className="text-zinc-100 flex items-center gap-2">
             Step Details
             {completed && (
@@ -81,7 +81,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
           </SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-200px)] mt-8 pr-4">
+        <ScrollArea className="h-[calc(100vh-140px)] mt-4 px-4">
           <div className="space-y-8">
             {/* Label */}
             <div className="space-y-2">
@@ -92,7 +92,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                 id="label"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
-                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-emerald-500"
+                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors"
               />
             </div>
 
@@ -105,7 +105,8 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-emerald-500 min-h-[120px]"
+                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors min-h-[120px] wrap-break-word"
+                style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}
               />
             </div>
 
@@ -166,13 +167,13 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                   placeholder="Resource title"
                   value={newResourceTitle}
                   onChange={(e) => setNewResourceTitle(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm"
+                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors"
                 />
                 <Input
                   placeholder="https://..."
                   value={newResourceUrl}
                   onChange={(e) => setNewResourceUrl(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm"
+                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors"
                 />
                 <Button
                   variant="outline"

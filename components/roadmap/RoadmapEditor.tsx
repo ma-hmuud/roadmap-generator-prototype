@@ -34,7 +34,7 @@ export function RoadmapEditor({
   const [nodes, setNodes, handleNodesChange] = useNodesState(initialNodes);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [edges, setEdges, handleEdgesChange] = useEdgesState(initialEdges);
-  
+
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -116,19 +116,19 @@ export function RoadmapEditor({
         onNodeClick={onNodeClick}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.2 }}
-        minZoom={0.3}
+        fitViewOptions={{ padding: 1 }}
+        minZoom={0.5}
         maxZoom={1.5}
         proOptions={{ hideAttribution: true }}
         className="roadmap-flow"
       >
-        <Controls 
+        <Controls
           className="bg-zinc-800! border-zinc-700! rounded-lg! [&>button]:bg-zinc-800! [&>button]:border-zinc-700! [&>button]:text-zinc-300! [&>button:hover]:bg-zinc-700!"
         />
-        <Background 
-          variant={BackgroundVariant.Dots} 
-          gap={20} 
-          size={1} 
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={20}
+          size={1}
           color="#3f3f46"
         />
       </ReactFlow>
