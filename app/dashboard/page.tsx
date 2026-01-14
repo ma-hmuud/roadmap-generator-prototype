@@ -22,7 +22,9 @@ export default function DashboardPage() {
 
   if (isLoading || !isAuthenticated) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div style={{
+        background: 'radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
+      }} className="min-h-screen flex items-center justify-center">
         <div className="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -56,7 +58,9 @@ function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div style={{
+      background: 'radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
+    }} className="min-h-screen bg-zinc-950">
       <header className="border-b border-zinc-900">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">

@@ -2,7 +2,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col">
+    <div style={{
+      background: 'radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
+    }} className="min-h-screen flex flex-col">
       {/* Nav */}
       <nav className="px-6 py-5 flex items-center justify-between max-w-6xl mx-auto w-full">
         <div className="flex items-center gap-2">
