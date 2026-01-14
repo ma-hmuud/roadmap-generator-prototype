@@ -52,7 +52,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
 
   if (roadmaps.length === 0) {
     return (
-      <Card className="border-zinc-800 bg-zinc-900">
+      <Card className="border-zinc-800 bg-transparent">
         <CardContent className="flex flex-col items-center justify-center py-12">
           <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center mb-4">
             <svg
