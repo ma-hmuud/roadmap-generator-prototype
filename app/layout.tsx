@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Roadmap Generator - AI-Powered Learning Paths",
   description: "Generate personalized learning roadmaps with AI. Answer a few questions and get a customized step-by-step guide for any topic.",
   icons: {
-    icon: "/convex.svg",
+    icon: "/favicon.svg",
   },
 };
 

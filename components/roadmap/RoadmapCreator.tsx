@@ -325,7 +325,7 @@ export function RoadmapCreator({ userId }: RoadmapCreatorProps) {
               </p>
             </div>
             <button
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/dashboard")}
               className="px-4 py-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
             >
               Back to Dashboard

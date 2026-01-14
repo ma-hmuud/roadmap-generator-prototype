@@ -77,7 +77,7 @@ export default function SignIn() {
                   setLoading(false);
                 })
                 .then(() => {
-                  router.push("/");
+                  router.push("/dashboard");
                 });
             }}
           >

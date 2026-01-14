@@ -20,7 +20,7 @@ export interface LayoutEdge {
 export function getLayoutedElements(
   nodes: LayoutNode[],
   edges: LayoutEdge[],
-  direction: "TB" | "LR" = "TB"
+  direction: "TB" | "LR" = "TB",
 ): { nodes: Node[]; edges: Edge[] } {
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
@@ -68,7 +68,7 @@ export function getLayoutedElements(
     };
   });
 
-  const layoutedEdges: Edge[] = edges.map((edge, index) => ({
+  const layoutedEdges: Edge[] = edges.map((edge) => ({
     id: `e${edge.source}-${edge.target}`,
     source: edge.source,
     target: edge.target,
@@ -78,4 +78,3 @@ export function getLayoutedElements(
 
   return { nodes: layoutedNodes, edges: layoutedEdges };
 }
-

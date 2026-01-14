@@ -74,7 +74,7 @@ export default function RoadmapPage() {
     return (
       <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold text-zinc-100 mb-4">Roadmap not found</h1>
-        <Link href="/" className="text-emerald-400 hover:text-emerald-300">
+        <Link href="/dashboard" className="text-emerald-400 hover:text-emerald-300">
           ← Back to Dashboard
         </Link>
       </div>
@@ -97,7 +97,7 @@ export default function RoadmapPage() {
   }));
 
   const completedCount = roadmap.nodes.filter((n) => n.data.completed).length;
-  const progress = roadmap.nodes.length > 0 
+  const progress = roadmap.nodes.length > 0
     ? Math.round((completedCount / roadmap.nodes.length) * 100)
     : 0;
 
@@ -106,7 +106,7 @@ export default function RoadmapPage() {
       <header className="shrink-0 bg-zinc-950 border-b border-zinc-800">
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Link href="/dashboard" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #34d399 0%, #06b6d4 100%)' }}>
                 <svg
                   className="w-5 h-5 text-white"
@@ -136,8 +136,8 @@ export default function RoadmapPage() {
               </div>
             </div>
           </div>
-          <Link 
-            href="/"
+          <Link
+            href="/dashboard"
             className="text-zinc-400 hover:text-zinc-200 transition-colors text-sm px-4 py-2 rounded-lg hover:bg-zinc-800"
           >
             ← Back to Dashboard
