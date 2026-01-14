@@ -36,10 +36,10 @@ export default function NewRoadmapPage() {
 
   return (
     <div className="min-h-screen bg-zinc-950">
-      <header className="sticky top-0 z-10 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
+      <header className="sticky top-0 z-10 bg-zinc-950 border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #34d399 0%, #06b6d4 100%)' }}>
               <svg
                 className="w-5 h-5 text-white"
                 fill="none"

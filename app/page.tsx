@@ -10,116 +10,110 @@ import { RoadmapList } from "@/components/roadmap/RoadmapList";
 import type { Id } from "@/convex/_generated/dataModel";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-zinc-950">
-      <header className="sticky top-0 z-10 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                />
-              </svg>
-            </div>
-            <h1 className="font-bold text-xl text-zinc-100">Roadmap Generator</h1>
-          </div>
-          <SignOutButton />
-        </div>
-      </header>
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        <Content />
-      </main>
-    </div>
-  );
-}
+  const { isAuthenticated, isLoading } = useConvexAuth();
 
-function SignOutButton() {
-  const { isAuthenticated } = useConvexAuth();
-  const { signOut } = useAuthActions();
-  const router = useRouter();
-  
-  if (!isAuthenticated) return null;
-
-  return (
-    <Button
-      variant="ghost"
-      className="text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800"
-      onClick={() =>
-        void signOut().then(() => {
-          router.push("/signin");
-        })
-      }
-    >
-      Sign out
-    </Button>
-  );
-}
-
-function Content() {
-  const { isAuthenticated, isLoading: authLoading } = useConvexAuth();
-  
-  if (authLoading) {
+  if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <div className="flex items-center gap-3">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" />
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-          <div className="w-2 h-2 bg-emerald-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
-        </div>
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   if (!isAuthenticated) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center mb-8">
-          <svg
-            className="w-10 h-10 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-            />
-          </svg>
-        </div>
-        <h2 className="text-4xl font-bold text-zinc-100 mb-4">
-          AI-Powered Learning Roadmaps
-        </h2>
-        <p className="text-zinc-400 text-lg max-w-lg mb-8">
-          Generate personalized learning paths for any topic. Answer a few questions, 
-          and AI will create a step-by-step roadmap tailored to your experience and goals.
-        </p>
-        <Link href="/signin">
-          <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold px-8 py-6 text-lg">
-            Get Started
-          </Button>
-        </Link>
-      </div>
-    );
+    return <LandingPage />;
   }
 
-  return <AuthenticatedContent />;
+  return <Dashboard />;
 }
 
-function AuthenticatedContent() {
+function LandingPage() {
+  return (
+    <div className="min-h-screen bg-zinc-950 flex flex-col">
+      {/* Nav */}
+      <nav className="px-6 py-5 flex items-center justify-between max-w-6xl mx-auto w-full">
+        <div className="flex items-center gap-2">
+          <div
+            className="w-7 h-7 rounded-md flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)' }}
+          >
+            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+          </div>
+          <span className="text-zinc-100 font-semibold">Roadmap</span>
+        </div>
+        <Link href="/signin">
+          <Button variant="ghost" className="text-zinc-400 hover:text-zinc-100 text-sm">
+            Sign in
+          </Button>
+        </Link>
+      </nav>
+
+      {/* Hero */}
+      <main className="flex-1 flex flex-col items-center justify-center px-6 -mt-16">
+        <div className="max-w-2xl text-center">
+          <h1 className="text-5xl sm:text-6xl font-bold text-zinc-100 tracking-tight leading-tight">
+            Learn anything,
+            <br />
+            <span className="text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
+              step by step
+            </span>
+          </h1>
+
+          <p className="mt-6 text-lg text-zinc-500 max-w-md mx-auto">
+            AI creates personalized learning roadmaps tailored to your goals and experience level.
+          </p>
+
+          <div className="mt-10">
+            <Link href="/signin">
+              <button
+                className="px-8 py-3.5 rounded-lg text-white font-medium text-base transition-transform hover:scale-105 active:scale-100"
+                style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}
+              >
+                Get started — it&apos;s free
+              </button>
+            </Link>
+          </div>
+
+          {/* Minimal feature hints */}
+          <div className="mt-16 flex items-center justify-center gap-8 text-sm text-zinc-600">
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Any topic
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Personalized
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Track progress
+            </span>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="py-6 text-center text-zinc-700 text-xs">
+        Powered by AI
+      </footer>
+    </div>
+  );
+}
+
+function Dashboard() {
+  const { signOut } = useAuthActions();
+  const router = useRouter();
   const currentUser = useQuery(api.myFunctions.currentUser);
   const roadmaps = useQuery(
-    api.roadmaps.list, 
+    api.roadmaps.list,
     currentUser?._id ? { userId: currentUser._id } : "skip"
   );
   const deleteRoadmap = useMutation(api.roadmaps.deleteRoadmap);
@@ -132,46 +126,56 @@ function AuthenticatedContent() {
 
   if (currentUser === undefined || (currentUser && roadmaps === undefined)) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="flex items-center gap-3">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" />
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-          <div className="w-2 h-2 bg-emerald-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
-        </div>
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold text-zinc-100">Your Roadmaps</h2>
-          <p className="text-zinc-400 mt-1">
-            View, edit, and track progress on your learning journeys
-          </p>
-        </div>
-        <Link href="/roadmap/new">
-          <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold">
-            <svg
-              className="w-4 h-4 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <div className="min-h-screen bg-zinc-950">
+      <header className="border-b border-zinc-900">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-7 h-7 rounded-md flex items-center justify-center"
+              style={{ background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)' }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            New Roadmap
+              <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+            </div>
+            <span className="text-zinc-100 font-semibold">Roadmap</span>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-zinc-500 hover:text-zinc-300 text-sm"
+            onClick={() => void signOut().then(() => router.push("/signin"))}
+          >
+            Sign out
           </Button>
-        </Link>
-      </div>
+        </div>
+      </header>
 
-      <RoadmapList roadmaps={roadmaps ?? []} onDelete={handleDelete} />
+      <main className="max-w-6xl mx-auto px-6 py-10">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-bold text-zinc-100">Your Roadmaps</h1>
+          <Link href="/roadmap/new">
+            <button
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-white font-medium text-sm"
+              style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+              New
+            </button>
+          </Link>
+        </div>
+
+        <RoadmapList roadmaps={roadmaps ?? []} onDelete={handleDelete} />
+      </main>
     </div>
   );
 }

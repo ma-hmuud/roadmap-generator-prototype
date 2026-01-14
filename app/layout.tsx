@@ -28,9 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <html lang="en" className="dark">
+      <html lang="en" className="dark" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950`}
+          suppressHydrationWarning
         >
           <ConvexClientProvider>{children}</ConvexClientProvider>
         </body>

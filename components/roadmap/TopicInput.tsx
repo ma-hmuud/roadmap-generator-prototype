@@ -21,9 +21,9 @@ export function TopicInput({ onSubmit, isLoading }: TopicInputProps) {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto border-zinc-800 bg-zinc-900/50 backdrop-blur">
+    <Card className="w-full max-w-2xl mx-auto border-zinc-800 bg-zinc-900">
       <CardHeader className="text-center">
-        <CardTitle className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+        <CardTitle className="text-3xl font-bold text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #34d399 0%, #22d3ee 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
           Create Your Learning Roadmap
         </CardTitle>
         <CardDescription className="text-zinc-400 text-lg">
@@ -39,10 +39,11 @@ export function TopicInput({ onSubmit, isLoading }: TopicInputProps) {
             className="flex-1 bg-zinc-800 border-zinc-700 text-zinc-100 placeholder:text-zinc-500 focus-visible:ring-emerald-500"
             disabled={isLoading}
           />
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             disabled={!topic.trim() || isLoading}
-            className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold px-8"
+            className="text-white font-semibold px-8"
+            style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}
           >
             {isLoading ? (
               <span className="flex items-center gap-2">

@@ -52,7 +52,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
 
   if (roadmaps.length === 0) {
     return (
-      <Card className="border-zinc-800 bg-zinc-900/50 backdrop-blur">
+      <Card className="border-zinc-800 bg-zinc-900">
         <CardContent className="flex flex-col items-center justify-center py-12">
           <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center mb-4">
             <svg
@@ -74,7 +74,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
             Create your first learning roadmap to get started on your journey
           </p>
           <Link href="/roadmap/new">
-            <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white">
+            <Button className="text-white" style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}>
               Create Your First Roadmap
             </Button>
           </Link>
@@ -90,12 +90,12 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
         return (
           <Card
             key={roadmap._id}
-            className="border-zinc-800 bg-zinc-900/50 backdrop-blur hover:border-zinc-700 transition-colors group"
+            className="border-zinc-800 bg-zinc-900 hover:border-zinc-700 transition-colors group"
           >
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
-                  <CardTitle className="text-zinc-100 text-lg truncate">
+                  <CardTitle className="text-zinc-100 text-lg truncate whitespace-normal">
                     {roadmap.title}
                   </CardTitle>
                   <CardDescription className="text-zinc-500 truncate mt-1">
@@ -114,8 +114,11 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
                   </div>
                   <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full transition-all duration-500"
-                      style={{ width: `${progress}%` }}
+                      className="h-full rounded-full transition-all duration-500"
+                      style={{
+                        background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)',
+                        width: `${progress}%`
+                      }}
                     />
                   </div>
                   <p className="text-xs text-zinc-500 mt-1">

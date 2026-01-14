@@ -32,6 +32,7 @@ export function RoadmapEditor({
   onNodeUpdate,
 }: RoadmapEditorProps) {
   const [nodes, setNodes, handleNodesChange] = useNodesState(initialNodes);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [edges, setEdges, handleEdgesChange] = useEdgesState(initialEdges);
   
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
@@ -122,7 +123,7 @@ export function RoadmapEditor({
         className="roadmap-flow"
       >
         <Controls 
-          className="!bg-zinc-800 !border-zinc-700 !rounded-lg [&>button]:!bg-zinc-800 [&>button]:!border-zinc-700 [&>button]:!text-zinc-300 [&>button:hover]:!bg-zinc-700"
+          className="bg-zinc-800! border-zinc-700! rounded-lg! [&>button]:bg-zinc-800! [&>button]:border-zinc-700! [&>button]:text-zinc-300! [&>button:hover]:bg-zinc-700!"
         />
         <Background 
           variant={BackgroundVariant.Dots} 

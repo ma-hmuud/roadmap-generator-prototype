@@ -34,7 +34,7 @@ export function QuestionsForm({ topic, questions, onSubmit, isLoading }: Questio
   const allAnswered = questions.every((q) => answers[q.id]?.trim());
 
   return (
-    <Card className="w-full max-w-2xl mx-auto border-zinc-800 bg-zinc-900/50 backdrop-blur">
+    <Card className="w-full max-w-2xl mx-auto border-zinc-800 bg-zinc-900">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl font-bold text-zinc-100">
           Let&apos;s Personalize Your Roadmap
@@ -66,7 +66,8 @@ export function QuestionsForm({ topic, questions, onSubmit, isLoading }: Questio
           <Button
             type="submit"
             disabled={!allAnswered || isLoading}
-            className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold py-6 text-lg"
+            className="w-full text-white font-semibold py-6 text-lg"
+            style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}
           >
             {isLoading ? (
               <span className="flex items-center gap-2">

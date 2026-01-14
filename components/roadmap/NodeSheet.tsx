@@ -34,10 +34,12 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
 
   useEffect(() => {
     if (nodeData) {
-      setLabel(nodeData.label);
-      setDescription(nodeData.description);
-      setResources(nodeData.resources);
-      setCompleted(nodeData.completed);
+      setTimeout(() => {
+        setLabel(nodeData.label);
+        setDescription(nodeData.description);
+        setResources(nodeData.resources);
+        setCompleted(nodeData.completed);
+      }, 0);
     }
   }, [nodeData]);
 
@@ -64,7 +66,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="bg-zinc-900 border-zinc-800 w-full sm:max-w-lg">
+      <SheetContent className="bg-zinc-900 border-zinc-800 w-full sm:max-w-lg p-6">
         <SheetHeader>
           <SheetTitle className="text-zinc-100 flex items-center gap-2">
             Step Details
@@ -79,8 +81,8 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
           </SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-180px)] mt-6 pr-4">
-          <div className="space-y-6">
+        <ScrollArea className="h-[calc(100vh-200px)] mt-8 pr-4">
+          <div className="space-y-8">
             {/* Label */}
             <div className="space-y-2">
               <Label htmlFor="label" className="text-zinc-200">
@@ -117,8 +119,8 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                 variant={completed ? "default" : "outline"}
                 size="sm"
                 onClick={() => setCompleted(!completed)}
-                className={completed 
-                  ? "bg-emerald-500 hover:bg-emerald-600 text-white" 
+                className={completed
+                  ? "bg-emerald-500 hover:bg-emerald-600 text-white"
                   : "border-zinc-600 text-zinc-300 hover:bg-zinc-800"
                 }
               >
@@ -127,11 +129,11 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
             </div>
 
             {/* Resources */}
-            <div className="space-y-3">
-              <Label className="text-zinc-200">Resources</Label>
-              
+            <div className="space-y-4">
+              <Label className="text-zinc-200 text-base">Resources</Label>
+
               {resources.length > 0 && (
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {resources.map((resource, index) => (
                     <div
                       key={index}
@@ -159,7 +161,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
               )}
 
               {/* Add new resource */}
-              <div className="p-3 rounded-lg border border-dashed border-zinc-700 space-y-2">
+              <div className="p-4 rounded-lg border border-dashed border-zinc-700 space-y-3">
                 <Input
                   placeholder="Resource title"
                   value={newResourceTitle}
@@ -184,23 +186,24 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
               </div>
             </div>
           </div>
-        </ScrollArea>
 
-        <div className="mt-6 flex gap-3">
-          <Button
-            variant="outline"
-            onClick={() => onOpenChange(false)}
-            className="flex-1 border-zinc-700 text-zinc-300 hover:bg-zinc-800"
-          >
-            Cancel
-          </Button>
-          <Button
-            onClick={handleSave}
-            className="flex-1 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white"
-          >
-            Save Changes
-          </Button>
-        </div>
+          <div className="mt-8 flex gap-4">
+            <Button
+              variant="outline"
+              onClick={() => onOpenChange(false)}
+              className="flex-1 border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleSave}
+              className="flex-1 text-white"
+              style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}
+            >
+              Save Changes
+            </Button>
+          </div>
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );

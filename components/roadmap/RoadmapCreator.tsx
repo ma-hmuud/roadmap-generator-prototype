@@ -271,7 +271,7 @@ export function RoadmapCreator({ userId }: RoadmapCreatorProps) {
 
       {step === "generating" && (
         <div className="flex flex-col items-center justify-center min-h-[60vh] p-6">
-          <div className="w-16 h-16 rounded-full bg-linear-to-r from-emerald-500 to-cyan-500 flex items-center justify-center mb-6 animate-pulse">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 animate-pulse" style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}>
             <svg
               className="w-8 h-8 text-white animate-spin"
               fill="none"
@@ -315,7 +315,7 @@ export function RoadmapCreator({ userId }: RoadmapCreatorProps) {
 
       {step === "editor" && layoutedNodes.length > 0 && (
         <div className="h-screen flex flex-col">
-          <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-zinc-900/80 backdrop-blur">
+          <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-zinc-900">
             <div>
               <h1 className="text-xl font-bold text-zinc-100">
                 {roadmapObject?.title || topic}

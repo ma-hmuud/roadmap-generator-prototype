@@ -13,18 +13,18 @@ export interface RoadmapNodeData {
 
 function RoadmapNodeComponent({ data, selected }: NodeProps) {
   const nodeData = data as unknown as RoadmapNodeData;
-  
+
   return (
     <div
       className={`
-        roadmap-node px-4 py-3 rounded-xl border-2 bg-zinc-900/90 backdrop-blur-sm
+        roadmap-node px-4 py-3 rounded-xl border-2 bg-zinc-900
         min-w-[200px] max-w-[280px] cursor-pointer transition-all duration-200
-        ${selected 
-          ? "border-emerald-400 shadow-lg shadow-emerald-500/20" 
+        ${selected
+          ? "border-emerald-400 shadow-lg shadow-emerald-500/20"
           : "border-zinc-700 hover:border-zinc-500"
         }
-        ${nodeData.completed 
-          ? "bg-emerald-950/50 border-emerald-600" 
+        ${nodeData.completed
+          ? "bg-emerald-950/50 border-emerald-600"
           : ""
         }
       `}
@@ -32,9 +32,9 @@ function RoadmapNodeComponent({ data, selected }: NodeProps) {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-3 !h-3 !bg-zinc-600 !border-2 !border-zinc-400"
+        className="w-3! h-3! bg-zinc-600! border-2! border-zinc-400!"
       />
-      
+
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-semibold text-zinc-100 text-sm leading-tight">
           {nodeData.label}
@@ -45,11 +45,11 @@ function RoadmapNodeComponent({ data, selected }: NodeProps) {
           </Badge>
         )}
       </div>
-      
+
       <p className="text-xs text-zinc-400 mt-1 line-clamp-2">
         {nodeData.description}
       </p>
-      
+
       {nodeData.resources.length > 0 && (
         <div className="flex items-center gap-1 mt-2">
           <span className="text-xs text-zinc-500">
@@ -57,11 +57,11 @@ function RoadmapNodeComponent({ data, selected }: NodeProps) {
           </span>
         </div>
       )}
-      
+
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-3 !h-3 !bg-zinc-600 !border-2 !border-zinc-400"
+        className="w-3! h-3! bg-zinc-600! border-2! border-zinc-400!"
       />
     </div>
   );
