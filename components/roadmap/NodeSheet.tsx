@@ -7,13 +7,13 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
+  SheetFooter,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import type { RoadmapNodeData } from "./RoadmapNode";
 
 interface NodeSheetProps {
@@ -31,6 +31,16 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
   const [completed, setCompleted] = useState(false);
   const [newResourceTitle, setNewResourceTitle] = useState("");
   const [newResourceUrl, setNewResourceUrl] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 640px)").matches);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (nodeData) {
@@ -66,8 +76,11 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="bg-zinc-900 border-zinc-800 w-full sm:max-w-lg px-6 py-4">
-        <SheetHeader className="pb-2">
+      <SheetContent
+        side={isMobile ? "bottom" : "right"}
+        className="bg-zinc-900 border-zinc-800 w-full flex flex-col h-dvh sm:h-full sm:max-w-lg p-0 gap-0"
+      >
+        <SheetHeader className="px-6 py-4 pb-2 shrink-0">
           <SheetTitle className="text-zinc-100 flex items-center gap-2">
             Step Details
             {completed && (
@@ -81,8 +94,8 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
           </SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-140px)] mt-4 px-4">
-          <div className="space-y-8">
+        <div className="flex-1 overflow-y-auto px-6 w-full [&::-webkit-scrollbar-track]:bg-transparent">
+          <div className="space-y-8 py-4">
             {/* Label */}
             <div className="space-y-2">
               <Label htmlFor="label" className="text-zinc-200">
@@ -152,7 +165,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                         variant="ghost"
                         size="sm"
                         onClick={() => removeResource(index)}
-                        className="text-zinc-500 hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="text-zinc-500 hover:text-red-400 hover:bg-red-500/10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity cursor-pointer"
                       >
                         Remove
                       </Button>
@@ -187,8 +200,10 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="mt-8 flex gap-4">
+        <SheetFooter className="px-6 py-4 border-t border-zinc-800 bg-zinc-900 shrink-0 pb-6 sm:pb-4">
+          <div className="flex gap-4 w-full">
             <Button
               variant="outline"
               onClick={() => onOpenChange(false)}
@@ -204,9 +219,8 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
               Save Changes
             </Button>
           </div>
-        </ScrollArea>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
 }
-
