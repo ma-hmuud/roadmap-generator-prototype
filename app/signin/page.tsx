@@ -3,6 +3,7 @@
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function SignIn() {
   const { signIn } = useAuthActions();
@@ -17,7 +18,7 @@ export default function SignIn() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
+          background: 'radial-gradient(ellipse at top right, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(20, 184, 166, 0.15) 0%, transparent 50%)',
         }}
       />
 
@@ -25,26 +26,11 @@ export default function SignIn() {
         {/* Logo and header */}
         <div className="text-center mb-8">
           <div
-            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6"
-            style={{
-              background: 'linear-gradient(135deg, #34d399 0%, #06b6d4 100%)',
-              boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.4)',
-            }}
+            className="inline-flex items-center justify-center rounded-2xl mb-6"
           >
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-              />
-            </svg>
+            <Image src="/favicon.svg" alt="SkillFlow Logo" width={100} height={100} />
           </div>
+
           <h1 className="text-3xl font-bold text-zinc-100 mb-2">
             {flow === "signIn" ? "Welcome back" : "Create an account"}
           </h1>
@@ -93,8 +79,8 @@ export default function SignIn() {
                   backgroundColor: 'rgba(39, 39, 42, 0.8)',
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = '#10b981';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.2)';
+                  e.target.style.borderColor = '#0ea5e9';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(14, 165, 233, 0.2)';
                 }}
                 onBlur={(e) => {
                   e.target.style.borderColor = '#3f3f46';
@@ -119,8 +105,8 @@ export default function SignIn() {
                   backgroundColor: 'rgba(39, 39, 42, 0.8)',
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = '#10b981';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.2)';
+                  e.target.style.borderColor = '#0ea5e9';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(14, 165, 233, 0.2)';
                 }}
                 onBlur={(e) => {
                   e.target.style.borderColor = '#3f3f46';
@@ -161,18 +147,18 @@ export default function SignIn() {
             <button
               className="w-full text-white font-semibold rounded-xl py-4 mt-2 transition-transform duration-200 text-base disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)',
-                boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.4)',
+                background: 'linear-gradient(90deg, #0284c7 0%, #0d9488 100%)',
+                boxShadow: '0 10px 25px -5px rgba(14, 165, 233, 0.4)',
               }}
               onMouseEnter={(e) => {
                 if (!loading) {
                   e.currentTarget.style.transform = 'scale(1.02)';
-                  e.currentTarget.style.boxShadow = '0 15px 30px -5px rgba(16, 185, 129, 0.5)';
+                  e.currentTarget.style.boxShadow = '0 15px 30px -5px rgba(14, 165, 233, 0.5)';
                 }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(16, 185, 129, 0.4)';
+                e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(14, 165, 233, 0.4)';
               }}
               onMouseDown={(e) => {
                 if (!loading) {
@@ -210,7 +196,7 @@ export default function SignIn() {
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="px-4 text-zinc-500" style={{ backgroundColor: 'rgba(24, 24, 27, 0.95)' }}>
-                {flow === "signIn" ? "New to Roadmap Generator?" : "Already have an account?"}
+                {flow === "signIn" ? "New to SkillFlow?" : "Already have an account?"}
               </span>
             </div>
           </div>

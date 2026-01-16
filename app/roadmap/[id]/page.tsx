@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import type { Id } from "@/convex/_generated/dataModel";
 import type { Node } from "@xyflow/react";
 import type { RoadmapNodeData } from "@/components/roadmap/RoadmapNode";
+import Image from "next/image";
 
 export default function RoadmapPage() {
   const { isAuthenticated, isLoading: authLoading } = useConvexAuth();
@@ -58,9 +59,9 @@ export default function RoadmapPage() {
     return (
       <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" />
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-          <div className="w-2 h-2 bg-emerald-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+          <div className="w-2 h-2 bg-sky-400 rounded-full animate-bounce" />
+          <div className="w-2 h-2 bg-sky-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
+          <div className="w-2 h-2 bg-sky-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
         </div>
       </div>
     );
@@ -74,7 +75,7 @@ export default function RoadmapPage() {
     return (
       <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold text-zinc-100 mb-4">Roadmap not found</h1>
-        <Link href="/dashboard" className="text-emerald-400 hover:text-emerald-300">
+        <Link href="/dashboard" className="text-sky-400 hover:text-sky-300">
           ← Back to Dashboard
         </Link>
       </div>
@@ -107,27 +108,17 @@ export default function RoadmapPage() {
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/dashboard" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #34d399 0%, #06b6d4 100%)' }}>
-                <svg
-                  className="w-5 h-5 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                  />
-                </svg>
-              </div>
+            <div
+            className="inline-flex items-center justify-center rounded-2xl"
+          >
+            <Image src="/favicon.svg" alt="SkillFlow Logo" width={50} height={50} />
+          </div>
             </Link>
             <div className="h-6 w-px bg-zinc-700" />
             <div>
               <h1 className="font-bold text-lg text-zinc-100">{roadmap.title}</h1>
               <div className="flex items-center gap-2 mt-0.5">
-                <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">
+                <Badge className="bg-sky-500/20 text-sky-400 border-sky-500/30 text-xs">
                   {progress}% Complete
                 </Badge>
                 <span className="text-xs text-zinc-500">
@@ -161,4 +152,3 @@ export default function RoadmapPage() {
     </div>
   );
 }
-

@@ -84,7 +84,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
           <SheetTitle className="text-zinc-100 flex items-center gap-2">
             Step Details
             {completed && (
-              <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+              <Badge className="bg-sky-500/20 text-sky-400 border-sky-500/30">
                 Completed
               </Badge>
             )}
@@ -105,7 +105,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                 id="label"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
-                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors"
+                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-0 focus-visible:border-sky-500 transition-colors"
               />
             </div>
 
@@ -118,7 +118,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors min-h-[120px] wrap-break-word"
+                className="bg-zinc-800 border-zinc-700 text-zinc-100 focus-visible:ring-0 focus-visible:border-sky-500 transition-colors min-h-[120px] wrap-break-word"
                 style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}
               />
             </div>
@@ -134,7 +134,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                 size="sm"
                 onClick={() => setCompleted(!completed)}
                 className={completed
-                  ? "bg-emerald-500 hover:bg-emerald-600 text-white"
+                  ? "bg-sky-500 hover:bg-sky-600 text-white"
                   : "border-zinc-600 text-zinc-300 hover:bg-zinc-800"
                 }
               >
@@ -157,7 +157,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                         href={resource.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-400 hover:text-emerald-300 text-sm font-medium truncate flex-1"
+                        className="text-sky-400 hover:text-sky-300 text-sm font-medium truncate flex-1"
                       >
                         {resource.title}
                       </a>
@@ -180,13 +180,13 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
                   placeholder="Resource title"
                   value={newResourceTitle}
                   onChange={(e) => setNewResourceTitle(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors"
+                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm focus-visible:ring-0 focus-visible:border-sky-500 transition-colors"
                 />
                 <Input
                   placeholder="https://..."
                   value={newResourceUrl}
                   onChange={(e) => setNewResourceUrl(e.target.value)}
-                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm focus-visible:ring-0 focus-visible:border-emerald-500 transition-colors"
+                  className="bg-zinc-800 border-zinc-700 text-zinc-100 text-sm focus-visible:ring-0 focus-visible:border-sky-500 transition-colors"
                 />
                 <Button
                   variant="outline"
@@ -214,7 +214,7 @@ export function NodeSheet({ open, onOpenChange, nodeId, nodeData, onSave }: Node
             <Button
               onClick={handleSave}
               className="flex-1 text-white"
-              style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}
+              style={{ background: 'linear-gradient(90deg, #0284c7 0%, #0d9488 100%)' }}
             >
               Save Changes
             </Button>

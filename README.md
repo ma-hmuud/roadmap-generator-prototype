@@ -1,4 +1,6 @@
-# Roadmap Generator
+# SkillFlow
+
+AI-Powered Learning Paths
 
 AI-powered learning roadmap generator that creates personalized step-by-step learning paths for any topic.
 

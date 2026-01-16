@@ -37,7 +37,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
         );
       case "ready":
         return (
-          <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+          <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30">
             Ready
           </Badge>
         );
@@ -65,7 +65,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={1.5}
-                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
               />
             </svg>
           </div>
@@ -74,7 +74,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
             Create your first learning roadmap to get started on your journey
           </p>
           <Link href="/roadmap/new">
-            <Button className="text-white" style={{ background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)' }}>
+            <Button className="text-white shadow-lg shadow-sky-500/20" style={{ background: 'linear-gradient(90deg, #0284c7 0%, #0d9488 100%)' }}>
               Create Your First Roadmap
             </Button>
           </Link>
@@ -116,7 +116,7 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
                     <div
                       className="h-full rounded-full transition-all duration-500"
                       style={{
-                        background: 'linear-gradient(90deg, #10b981 0%, #06b6d4 100%)',
+                        background: 'linear-gradient(90deg, #0284c7 0%, #2dd4bf 100%)',
                         width: `${progress}%`
                       }}
                     />
@@ -171,4 +171,3 @@ export function RoadmapList({ roadmaps, onDelete }: RoadmapListProps) {
     </div>
   );
 }
-

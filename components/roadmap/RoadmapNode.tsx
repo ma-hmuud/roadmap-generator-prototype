@@ -20,11 +20,11 @@ function RoadmapNodeComponent({ data, selected }: NodeProps) {
         roadmap-node px-4 py-3 rounded-xl border-2 bg-zinc-900
         min-w-[200px] max-w-[280px] cursor-pointer transition-all duration-200
         ${selected
-          ? "border-emerald-400 shadow-lg shadow-emerald-500/20"
+          ? "border-sky-400 shadow-lg shadow-sky-500/20"
           : "border-zinc-700 hover:border-zinc-500"
         }
         ${nodeData.completed
-          ? "bg-emerald-950/50 border-emerald-600"
+          ? "bg-sky-950/50 border-sky-600"
           : ""
         }
       `}
@@ -40,7 +40,7 @@ function RoadmapNodeComponent({ data, selected }: NodeProps) {
           {nodeData.label}
         </h3>
         {nodeData.completed && (
-          <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs shrink-0">
+          <Badge className="bg-sky-500/20 text-sky-400 border-sky-500/30 text-xs shrink-0">
             Done
           </Badge>
         )}
@@ -68,4 +68,3 @@ function RoadmapNodeComponent({ data, selected }: NodeProps) {
 }
 
 export const RoadmapNode = memo(RoadmapNodeComponent);
-
